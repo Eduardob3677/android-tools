@@ -80,6 +80,18 @@ build and installed as follows:
 	$ make
 	$ make install
 
+## Platform Support
+
+android-tools supports multiple architectures including:
+
+* x86_64 (Intel/AMD 64-bit)
+* aarch64 (ARM 64-bit)
+* macOS (both Intel and Apple Silicon)
+
+The project is tested on various Linux distributions and can be built
+on Termux (Android terminal emulator). The build system uses CMake which
+makes it portable across different platforms and architectures.
+
 # Generating tarballs
 
 New source tarballs can be created from the Git repository using:
