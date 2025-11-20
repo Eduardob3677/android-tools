@@ -56,30 +56,40 @@ jobs:
       matrix:
         include:
           - os: "opensuse/leap:latest"
+            name: "opensuse-leap-clang"
             pkgs: "clang gcc11-c++"
             env1: "CC=clang CXX=clang++"
           - os: "opensuse/tumbleweed"
+            name: "opensuse-tumbleweed-gcc"
             pkgs: "gcc gcc-c++"
           - os: "opensuse/tumbleweed"
+            name: "opensuse-tumbleweed-clang"
             pkgs: clang
             env1: "CC=clang CXX=clang++"
           - os: "archlinux:base"
+            name: "archlinux-gcc"
             pkgs: gcc
           - os: "archlinux:base"
+            name: "archlinux-clang"
             pkgs: clang
             env1: "CC=clang CXX=clang++"
           - os: "ubuntu:24.04"
+            name: "ubuntu-24.04-gcc"
             pkgs: "gcc-10 g++-10"
             env1: "CC=gcc-10 CXX=g++-10"
           - os: "ubuntu:24.04"
+            name: "ubuntu-24.04-clang"
             pkgs: "clang-15 libstdc++-10-dev"
             env1: "CC=clang-15 CXX=clang++-15"
           - os: "alpine"
+            name: "alpine-gcc"
             pkgs: "gcc"
             env1: "CC=gcc CXX=g++"
           - os: "fedora:latest"
+            name: "fedora-latest-gcc"
             pkgs: "gcc gcc-g++"
           - os: "fedora:rawhide"
+            name: "fedora-rawhide-gcc"
             pkgs: "gcc gcc-g++"
 
     container:
@@ -167,7 +177,7 @@ jobs:
       - name: upload binaries
         uses: actions/upload-artifact@v4
         with:
-          name: android-tools-linux-${{ matrix.os }}
+          name: android-tools-linux-${{ matrix.name }}
           path: /usr/local/bin/*
 
   macos:
